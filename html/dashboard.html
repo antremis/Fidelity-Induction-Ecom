@@ -36,7 +36,7 @@
             <div class="carousel-slide">
                 <img src="../assets/carousel3.jpg" alt="Carousel Image 3">
             </div>
-        </div>
+        </div>  
     </div>
     </div>
 
@@ -60,5 +60,22 @@
     </div>
 
     <script src="../scripts/carousel.js"></script>
+    <!-- <script>
+                const getUserData = (id) =>{
+            axios.get(`http://127.0.0.1:5000/api/logs/${id}`)
+            .then(function (response) {
+                // handle success
+                username_field.value = response.data.email
+                phn_field.value = response.data.phone
+                address_field.value = response.data.address
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        }
+        getUserData("759cfd7f-4425-4fb2-8b27-f9758fb276ad")
+
+    </script> -->
 </body>
 </html>

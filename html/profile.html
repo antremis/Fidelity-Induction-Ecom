@@ -5,9 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
     <link rel="stylesheet" href="../styles/profile.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>My Profile</title>
 </head>
 <body>
+    <script>
+        // GET request to fetch all products
+        // axios.get('http://127.0.0.1:5000/api/logs')
+        //   .then(function (response) {
+        //     // handle success
+        //     console.log(response.data);
+        //     // Process the response data as needed
+        //   })
+        //   .catch(function (error) {
+        //     // handle error
+        //     console.log(error);
+        //   });
+    
+        // // POST request to add a product
+        // const profile = () =>{
+        // axios.post('http://127.0.0.1:5000/api/product', {
+           
+        //   })
+        //   .then(function (response) {
+        //     // handle success
+        //     console.log(response.data);
+        //   })
+        //   .catch(function (error) {
+        //     // handle error
+        //     console.log(error);
+        //   });}
+        
+    </script>
     <header class="header">
         <h1>My Profile</h1>
         <div class="search-bar">
@@ -31,14 +60,11 @@
         <div class="profile-details">
             <h2>User Details</h2>
             <form>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" value="JohnDoe" readonly>
-                <br><br>
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="arshita@gmail.com" readonly>
                 <br><br>
-                <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" value="Arshita Madan" readonly>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone" value="9876789875" readonly>
                 <br><br>
                 <label for="address">Address:</label>
                 <textarea id="address" name="address" readonly>123 Main St, City</textarea>
@@ -47,6 +73,39 @@
         <div class="order-history">
             <button>Order History</button>
         </div>
+        <!-- <p id="p">asldahsodia</p> -->
     </div>
+    <script>
+        
+
+        const form = document.querySelector("form")
+        const username_field = form.email
+        const phn_field = form.phone
+        const address_field = form.address
+
+        // const p = document.querySelector("#p").innerHTML = 1        
+
+        const getUserData = (id) =>{
+            axios.get(`http://127.0.0.1:5000/api/user/${id}`)
+            .then(function (response) {
+                // handle success
+                username_field.value = response.data.email
+                phn_field.value = response.data.phone
+                address_field.value = response.data.address
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        }
+        
+        
+        document.onload(() => {
+            let uid = localStorage.getItem("uid")
+            getUserData(uid)
+        })
+
+
+    </script>
 </body>
 </html>
