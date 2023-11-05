@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product detail page</title>
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="../styles/product_description.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+	
+<!-- 
+    - #HEADER
+  -->
+
+  <header class="header">
+    <div class="container">
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <a href="#" class="logo">
+        <img src="../assets/nike_logo.svg" width="77" height="20" alt="Nike home">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+
+          <li>
+            <a href="#" class="navbar-link">Collection</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Men</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Women</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="navbar-link">Contact</a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="header-action">
+
+        <button class="header-action-btn" aria-label="add to cart">
+          <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <button class="profile-btn" aria-label="profile">
+          <img src="../assets/profile.png" width="100" height="100" alt="profile" class="img">
+        </button>
+
+      </div>
+
+      <div class="overlay" data-overlay data-nav-toggler></div>
+
+    </div>
+  </header>
+  <main>
+    <article>
+
+      <!-- 
+        - #PRODUCT
+      -->
+
+      <section class="section product" aria-label="product">
+        <div class="container">
+
+          <div class="product-slides">
+
+            <div class="slider-banner" data-slider>
+              <figure class="product-banner" style="width: 100px; height: 400px;">
+                <img src="../assets/product-1.png" width="300" height="300" loading="lazy" alt="Nike Sneaker"
+                  class="img-cover">
+              </figure>
+            </div>
+
+            <button class="slide-btn prev" aria-label="Previous image" data-prev>
+              <ion-icon name="chevron-back" aria-hidden="true"></ion-icon>
+            </button>
+
+            <button class="slide-btn next" aria-label="Next image" data-next>
+              <ion-icon name="chevron-forward" aria-hidden="true"></ion-icon>
+            </button>
+
+          </div>
+
+          <div class="product-content">
+
+            <p class="product-subtitle">Nike Company</p>
+
+            <h1 class="h1 product-title">Fall Limited Edition Sneakers</h1>
+
+            <p class="product-text">
+              These low-profile sneakers are your perfect casual wear companion. Featuring a
+              durable rubber outer sole, they’ll withstand everything the weather can offer.
+            </p>
+
+            <div class="wrapper">
+
+              <span class="price" data-total-price>$125.00</span>
+
+              <span class="badge" style="font-size: 1.1vmax;">50%</span>
+
+              <del class="del" style="font-size: 1.5vmax;">$250.00</del>
+
+            </div>
+
+            <div class="btn-group">
+
+              <div class="counter-wrapper">
+
+                <button class="counter-btn" data-qty-minus>
+                  <ion-icon name="remove-outline"></ion-icon>
+                </button>
+
+                <span class="span" data-qty>1</span>
+
+                <button class="counter-btn" data-qty-plus>
+                  <ion-icon name="add-outline"></ion-icon>
+                </button>
+
+              </div>
+
+              <button class="cart-btn">
+                <ion-icon name="bag-handle-outline" style="width: 1.5vmax; height: 1.5vmax;" aria-hidden="true"></ion-icon>
+
+                <span class="span" style="font-size: 1vmax;">Add to cart</span>
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+	  <section class="section reviews" aria-label="reviews">
+		<div class="container_review" style="margin-left: 7vmax;">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="rating-block">
+						<h4>Average user rating</h4>
+						<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+						  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+						  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+						  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+						  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+						  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</button>
+					</div>
+				</div>
+				<div class="col-sm-3">
+					<h4>Rating breakdown</h4>
+					<div class="pull-left">
+						<div class="pull-left" style="width:35px; line-height:1;">
+							<div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
+						</div>
+						<div class="pull-left" style="width:180px;">
+							<div class="progress" style="height:15px; margin:8px 0;">
+							  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+						<div class="pull-right" style="margin-left:1px;">1</div>
+					</div>
+					<div class="pull-left">
+						<div class="pull-left" style="width:35px; line-height:1;">
+							<div style="height:9px; margin:5px 0;"> 4 <span class="glyphicon glyphicon-star"></span></div>
+						</div>
+						<div class="pull-left" style="width:180px;">
+							<div class="progress" style="height:15px; margin:8px 0;">
+							  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+						<div class="pull-right" style="margin-left:1px;">1</div>
+					</div>
+					<div class="pull-left">
+						<div class="pull-left" style="width:35px; line-height:1;">
+							<div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
+						</div>
+						<div class="pull-left" style="width:180px;">
+							<div class="progress" style="height:15px; margin:8px 0;">
+							  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+						<div class="pull-right" style="margin-left:1px;">0</div>
+					</div>
+					<div class="pull-left">
+						<div class="pull-left" style="width:35px; line-height:1;">
+							<div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
+						</div>
+						<div class="pull-left" style="width:180px;">
+							<div class="progress" style="height:15px; margin:8px 0;">
+							  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+						<div class="pull-right" style="margin-left:1px;">0</div>
+					</div>
+					<div class="pull-left">
+						<div class="pull-left" style="width:35px; line-height:1;">
+							<div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
+						</div>
+						<div class="pull-left" style="width:180px;">
+							<div class="progress" style="height:15px; margin:8px 0;">
+							  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
+								<span class="sr-only"></span>
+							  </div>
+							</div>
+						</div>
+						<div class="pull-right" style="margin-left:1px;">0</div>
+					</div>
+				</div>			
+			</div>			
+			
+			<div class="row">
+				<div class="col-sm-7">
+					<!-- <hr/> -->
+					<div class="review-block" style="margin-top: 50px;">
+						<div class="row">
+							<div class="col-sm-3">
+								<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+								<div class="review-block-name"><a href="#">nktailor</a></div>
+								<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="review-block-rate">
+									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+									  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+									  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+									  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+									  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									</button>
+									<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+									  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									</button>
+								</div>
+								<div class="review-block-title">this was nice in buy</div>
+								<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+							</div>
+						</div>
+						<hr/>
+						
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    </article>
+  </main>
+  <!-- 
+    - custom js link
+  -->
+  <script src="../js/product_description.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
