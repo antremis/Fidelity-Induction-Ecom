@@ -34,6 +34,36 @@
         <p>Total: ₹65.00</p>
         <a href="#" class="button">Continue Shopping</a>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const f1 = () => {
+        // Axios GET request for product name and cost
+            axios.get('http://127.0.0.1:5000/api/')
+                .then(function (response) {
+                    // handle success
+                    document.getElementById('product-name').innerText = `Product Name: ${response.data.product_name}`;
+                    document.getElementById('product-cost').innerText = `Cost: ₹${response.data.product_cost}`;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }        
+
+        const f2 = () => {
+        // Axios GET request for product quantity
+            axios.get('http://127.0.0.1:5000/api/')
+                .then(function (response) {
+                    // handle success
+                    document.getElementById('product-quantity').innerText = `Quantity: ${response.data.product_quantity}`;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+        }
+    </script>
 </body>
 
 </html>

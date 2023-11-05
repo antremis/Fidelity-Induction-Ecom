@@ -141,6 +141,23 @@
 
         <p class="total-cost">Total: ₹105.00</p>
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const f1 = () => {
+        // GET request to fetch the total cost
+            axios.get('http://127.0.0.1:5000/api/get_total_cost')
+                .then(function (response) {
+                    // handle success
+                    document.getElementById('total-cost').innerText = `Total: ₹${response.data.total_cost}`;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+            }        
+    </script>
 </body>
 
 </html>
