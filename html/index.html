@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        // made axios call to get data
+        response = {}
+        response.data = {"mssg": "success", data: [
+            { name: "Akash", id: 1 },
+            { name: "Avinash", id: 2 },
+            { name: "Arshita", id: 3 },
+            { name: "Faiza", id: 4 },
+        ]}
+        let container = document.querySelector("#container")
+        for (data of response.data.data){
+            container.innerHTML += `
+                <p>${data.name}</p>
+                <p>${data.id}</p>
+            `
+        }
+    </script>
+</body>
+
+</html>
