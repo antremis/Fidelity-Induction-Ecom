@@ -36,18 +36,19 @@
                     <li><a href="#">Logout</a></li>
                 </ul>
             </nav>
-        </header>
-        <div class="container mt-5 mb-5">
-            <div class="d-flex justify-content-center row" id="product-container">
-                Loading...
+            </header>
+            <div class="container mt-5 mb-5" id="product-container">
+                
                 </div>
-        </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        // GET request to fetch all products
-		const renderProduct = (product) => {
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script>
+                // GET request to fetch all products
+                const renderProduct = (product) => {
 
-			return `<div class="row p-2 bg-white border rounded product-wrapper" id ="${product.p_id}">
+                    return `
+                    <div class="d-flex justify-content-center row mb-4" >
+                        <div class="row p-2 bg-white border rounded product-wrapper" id ="${product.p_id}">
                         <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="${product.img}"></div>
                         <div class="col-md-6 mt-1">
                             <h5>${product.name}</h5>
@@ -61,95 +62,98 @@
                             <div class="d-flex flex-row align-items-center">
                                 <h4 class="mr-1">₹ ${product.cost}</h4>
                             </div>
-                            <h6 class="text-success"><span class="strike-text">₹ ${~~(product.cost*1.1)}</span></h6>
+                            <h6 class="text-success"><span class="strike-text">₹ ${~~(product.cost * 1.1)}</span></h6>
                             <div class="d-flex flex-column mt-4"><button class="btn btn-primary btn-sm" type="button">Buy Again</button></div>
                         </div>
+                    </div>
                     </div>`
 
-		}
+                }
 
-        const setRedirect = () => {
-            const cards = document.querySelectorAll(".product-wrapper")
-            cards.forEach(card => card.addEventListener('click', () => window.location=`product_description.html?pid=${card.id}`))
-        }
+                const setRedirect = () => {
+                    const cards = document.querySelectorAll(".product-wrapper")
+                    cards.forEach(card => card.addEventListener('click', () => window.location = `product_description.html?pid=${card.id}`))
+                }
 
-		const getProduct = () =>{
-        axios.get('http://127.0.0.1:5000//api/product')
-          .then(function (response) {
-            // handle success
-            console.log(response.data);
-			let product_div=document.querySelector("#product-container")
-            product_div.innerHTML = ""
-			for (product of response.data.products){
-				product_div.innerHTML+=renderProduct(product)
-			}
-            setRedirect()
-            // Process the response data as needed
-          })
+                const getProduct = () => {
+                    axios.get('http://127.0.0.1:5000/api/product')
+                        .then(function (response) {
+                            // handle success
+                            console.log(response.data);
+                            let product_div = document.querySelector("#product-container")
+                            product_div.innerHTML = ""
+                            for (product of response.data.products) {
+                                product_div.innerHTML += renderProduct(product)
+                            }
+                            setRedirect()
+                            // Process the response data as needed
+                        })
 
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          });
-		}
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        });
+                }
 
-		window.onload = getProduct;
+                window.onload = getProduct;
 
 
-        const createNewProduct = (name,cost, tag, img, des, s_id) =>{
-            axios.post('http://127.0.0.1:5000//api/product', {
-                "name":"shoes",
-                "cost":"1",
-                "tag":"shoes",
-                "img":"1",
-                "des":"good product",
-                "s_id":"3"
-            })
-            .then(function (response) {
-                // handle success
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-        }
+                const createNewProduct = (name, cost, tag, img, des, s_id) => {
+                    axios.post('http://127.0.0.1:5000//api/product', {
+                        "name": "shoes",
+                        "cost": "1",
+                        "tag": "shoes",
+                        "img": "1",
+                        "des": "good product",
+                        "s_id": "3"
+                    })
+                        .then(function (response) {
+                            // handle success
+                            console.log(response.data);
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        });
+                }
 
-		// window.onload = createNewReview;
-		
+                // window.onload = createNewReview;
 
-        const updateProduct=(r_id,review,rating) =>{
-        
-        axios.patch(`http://127.0.0.1:5000//api/product/${p_id}`, {
-            p_id:p_id
-        })
-        .then(function (response) {
-            // handle success
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });}
-	
 
-        const deleteReview=(p_id) =>{
-        axios.delete(`http://127.0.0.1:5000//api/product/${p_id}`, {
-        })
-        .then(function (response) {
-            // handle success
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });
+                const updateProduct = (r_id, review, rating) => {
 
-		
+                    axios.patch(`http://127.0.0.1:5000//api/product/${p_id}`, {
+                        p_id: p_id
+                    })
+                        .then(function (response) {
+                            // handle success
+                            console.log(response.data);
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        });
+                }
 
-		
-    }
 
-    </script>
-    </body>
+                const deleteReview = (p_id) => {
+                    axios.delete(`http://127.0.0.1:5000//api/product/${p_id}`, {
+                    })
+                        .then(function (response) {
+                            // handle success
+                            console.log(response.data);
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        });
+
+
+
+
+                }
+
+            </script>
+</body>
+
 </html>

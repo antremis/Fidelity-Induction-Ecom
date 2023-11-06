@@ -30,7 +30,7 @@
 	<!-- 
     - #HEADER
   -->
-  
+
 
 	<header class="header">
 		<a href="dashboard.html">E-Kart</a>
@@ -77,7 +77,7 @@
 					</div>
 
 					<div id="info-container">
-						
+
 					</div>
 
 				</div>
@@ -245,6 +245,30 @@
 	<!-- <script src="../scripts/product_description.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
 	<script>
+		const createNewReview = () => {
+			axios.post('http://127.0.0.1:5000/api/review', {
+				"p_id": params.get("pid"),
+				"rating": prompt("Enter rating"),
+				"review": prompt("Enter Review"),
+				"date": "12-10-2020",
+			}, {
+				headers: {
+					Authorisation: `Bearer ${localStorage.getItem('token')}`
+				}
+			})
+				.then(function (response) {
+					// handle success
+					console.log(response.data);
+				})
+				.catch(function (error) {
+					// handle error
+					console.log(error);
+				});
+		}
+		let add_review = document.querySelector("#add-review")
+		add_review.addEventListener("click", createNewReview)
+	</script>
+	<script>
 		renderProduct = (product) => {
 			return `
 			<div class="product-content" id=${product.id}>
@@ -273,7 +297,7 @@
 		<ion-icon name="bag-handle-outline" style="width: 1.5vmax; height: 1.5vmax;"
 			aria-hidden="true"></ion-icon>
 
-		<span class="span" style="font-size: 1vmax;">Add to cart</span>
+		<span class="span add-to-cart" style="font-size: 1vmax;">Add to cart</span>
 	</div>
 
 </div>
@@ -291,35 +315,37 @@
 			res = await axios.get(`http://127.0.0.1:5000/api/products/${params.get("pid")}`)
 			document.querySelector("#info-container").innerHTML = renderProduct(res.data.data)
 		}
-		window.onload = getData
 
-		// const addToCart = async () => {}
-		</script>
-			
-			<div class="row">
-				<div class="col-sm-7" id ="review-container">
-					<!-- <hr/> -->
-					
-				</div>
-			</div>
+		const addToCart = async () => {
+			let btn = document.querySelector(".add-to-cart")
+			axios.post("http://127.0.0.1:5000/api/cart/")
+		}
+	</script>
+
+	<div class="row">
+		<div class="col-sm-7" id="review-container">
+			<!-- <hr/> -->
+
 		</div>
+	</div>
+	</div>
 	</section>
 
-    </article>
-  </main>
-  <!-- 
+	</article>
+	</main>
+	<!-- 
     - custom js link
   -->
-  <script src="../js/product_description.js"></script>
+	<script src="../js/product_description.js"></script>
 
-  <!-- 
+	<!-- 
     - ionicon link
   -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        // GET request to fetch all products
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		// GET request to fetch all products
 		const renderReview = (review) => {
 
 			return `<div class="review-block" style="margin-top: 50px;" id=${review.r_id}>
@@ -357,83 +383,68 @@
 					</div>`
 
 		}
-		const getProductReviews = () =>{
-        axios.get(`http://127.0.0.1:5000/api/review/product/${params.get("pid")}`)
-          .then(function (response) {
-            // handle success
-			let review_div=document.querySelector("#review-container")
-			for (review of response.data.reviews){
-				review_div.innerHTML+=renderReview(review)
-			}
-            // Process the response data as needed
-          })
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          });
+		const getProductReviews = () => {
+			axios.get(`http://127.0.0.1:5000/api/review/product/${params.get("pid")}`)
+				.then(function (response) {
+					// handle success
+					let review_div = document.querySelector("#review-container")
+					for (review of response.data.reviews) {
+						review_div.innerHTML += renderReview(review)
+					}
+					// Process the response data as needed
+				})
+				.catch(function (error) {
+					// handle error
+					console.log(error);
+				});
 		}
 
-		window.onload = getProductReviews;
-
-        const createNewReview = (p_id,review,u_id,rating) =>{
-            axios.post('http://127.0.0.1:5000/api/review', {
-                "r_id":"1",
-                "p_id":"1",
-                "review":"good",
-                "u_id":"1",
-                "date":"12-10-2020",
-                "rating":"3"
-            })
-            .then(function (response) {
-                // handle success
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-        }
+		window.onload = async () => {
+			await getData()
+			await getProductReviews()
+		}
 
 		// window.onload = createNewReview;
-		
 
 
-        const updateReview=(r_id,review,rating) =>{
-        
-        axios.patch(`http://127.0.0.1:5000/api/review/${r_id}`, {
-            review:review,
-            rating:3
-        })
-        .then(function (response) {
-            // handle success
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });}
 
-		
+		const updateReview = (r_id, review, rating) => {
 
-        const deleteReview=(r_id) =>{
-        axios.delete(`http://127.0.0.1:5000/api/review/${r_id}`, {
-        })
-        .then(function (response) {
-            // handle success
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });
+			axios.patch(`http://127.0.0.1:5000/api/review/${r_id}`, {
+				review: review,
+				rating: 3
+			})
+				.then(function (response) {
+					// handle success
+					console.log(response.data);
+				})
+				.catch(function (error) {
+					// handle error
+					console.log(error);
+				});
+		}
 
-		
 
-		
-    }
 
-    </script>
-  
+		const deleteReview = (r_id) => {
+			axios.delete(`http://127.0.0.1:5000/api/review/${r_id}`, {
+			})
+				.then(function (response) {
+					// handle success
+					console.log(response.data);
+				})
+				.catch(function (error) {
+					// handle error
+					console.log(error);
+				});
+
+
+
+
+		}
+
+	</script>
+
 
 </body>
 
