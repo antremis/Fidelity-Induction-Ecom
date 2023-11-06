@@ -3,38 +3,39 @@
   <head>
     <meta charset="UTF-8">
     <title> Signup </title>
-    <link rel="stylesheet" href="/Users/radhikasinhal/git_final_project/scripts/signup.css">
+    <link rel="stylesheet" href="../styles/signup.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-      <form action="#">
+      <form>
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" required>
+            <input type="text" placeholder="Enter your name" name="name" required>
           </div>
           <div class="input-box">
             <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" required>
+            <input type="text" placeholder="Enter your username" name="username" required>
           </div>
           <div class="input-box">
             <span class="details">Email</span>
-            <input type="text" placeholder="Enter your email" required>
+            <input type="text" placeholder="Enter your email" name="email" required>
           </div>
           <div class="input-box">
             <span class="details">Phone Number</span>
-            <input type="text" placeholder="Enter your number" required>
+            <input type="text" placeholder="Enter your number" name="phn" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
+            <input type="text" placeholder="Enter your password" name="password" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="text" placeholder="Confirm your password" required>
+            <input type="text" placeholder="Confirm your password" name="pass2" required>
           </div>
         </div>
         <div class="gender-details">
@@ -61,7 +62,30 @@
           <input type="submit" value="Register">
         </div>
       </form>
+      <a href="login.html">Login</a>
     </div>
   </div>
+  <script>
+    let form = document.querySelector("form")
+    window.onload = () => localStorage.clear()
+    form.onsubmit = async e => {
+      e.preventDefault()
+      let token = await axios.put("http://127.0.0.1:5000/api/auth", {
+        username: form.username.value,
+        password: form.password.value,
+      })
+      localStorage.setItem("token", token.data.data)
+      await axios.post("http://127.0.0.1:5000/api/user", {
+        name: form.name.value,
+        phone: form.phn.value,
+        email: form.email.value,
+      }, {
+        headers: {
+          Authorisation: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      window.location = "dashboard.html"
+    }
+  </script>
 </body>
 </html>

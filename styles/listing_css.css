@@ -5,13 +5,7 @@
     --clr-secondary: red;
     --clr-border: grey;
   }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-}
+  
 body {
     background: #eee
 }
@@ -67,58 +61,3 @@ h5 {
 .wishlist-image{
     cursor: pointer;
 }
-
-.search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    width: 500px;
-}
-
-.header {
-    background-color: rgb(7, 26, 89);
-    color: var(--clr-white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    font-size: 18px;
-}
-
-.header h1 {
-    font-weight: normal; /* Adjust the font weight to normal */
-    font-size: 28px; /* Adjust the font size to 28px */
-}
-input[type="text"] {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-nav ul {
-    
-    list-style: none;
-    display: flex;
-}
-
-nav li {
-    margin-right: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
-    /* font-weight: bold; */
-}
-
