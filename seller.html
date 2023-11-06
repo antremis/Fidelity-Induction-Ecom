@@ -31,7 +31,7 @@
 		// POST request to add a product
 		const createProduct = () => {
 
-			axios.post('http://127.0.0.1:5000/api/product', {
+			axios.post('https://ecart-backend-u8l5.onrender.com/api/product', {
 
 				name: document.querySelector("#Brand-Name").innerHTML,
 				cost: 20000,
@@ -57,7 +57,7 @@
 
 		const updateProduct = () => {
 			//PATCH request to update a product
-			axios.patch('http://127.0.0.1:5000/api/products/4f5378fe-f861-47cd-ad23-59122c1715b2', {
+			axios.patch('https://ecart-backend-u8l5.onrender.com/api/products/4f5378fe-f861-47cd-ad23-59122c1715b2', {
 				//p_id: 1,
 				name: 'Updated Product Name',
 				cost: 1000

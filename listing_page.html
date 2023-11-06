@@ -76,7 +76,7 @@
                 }
 
                 const getProduct = () => {
-                    axios.get('http://127.0.0.1:5000/api/product')
+                    axios.get('https://ecart-backend-u8l5.onrender.com/api/product')
                         .then(function (response) {
                             // handle success
                             console.log(response.data);
@@ -99,7 +99,7 @@
 
 
                 const createNewProduct = (name, cost, tag, img, des, s_id) => {
-                    axios.post('http://127.0.0.1:5000//api/product', {
+                    axios.post('https://ecart-backend-u8l5.onrender.com//api/product', {
                         "name": "shoes",
                         "cost": "1",
                         "tag": "shoes",
@@ -122,7 +122,7 @@
 
                 const updateProduct = (r_id, review, rating) => {
 
-                    axios.patch(`http://127.0.0.1:5000//api/product/${p_id}`, {
+                    axios.patch(`https://ecart-backend-u8l5.onrender.com//api/product/${p_id}`, {
                         p_id: p_id
                     })
                         .then(function (response) {
@@ -137,7 +137,7 @@
 
 
                 const deleteReview = (p_id) => {
-                    axios.delete(`http://127.0.0.1:5000//api/product/${p_id}`, {
+                    axios.delete(`https://ecart-backend-u8l5.onrender.com//api/product/${p_id}`, {
                     })
                         .then(function (response) {
                             // handle success

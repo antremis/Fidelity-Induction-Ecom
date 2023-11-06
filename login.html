@@ -45,7 +45,7 @@
       window.onload = () => localStorage.clear()
       form.onsubmit = async e => {
          e.preventDefault()
-         let token = await axios.post("http://127.0.0.1:5000/api/auth", {
+         let token = await axios.post("https://ecart-backend-u8l5.onrender.com/api/auth", {
             username: form.username.value,
             password: form.password.value,
          })

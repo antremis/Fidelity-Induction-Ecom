@@ -62,7 +62,7 @@
     }
 
     const getCart = () => {
-        axios.get('http://127.0.0.1:5000/api/cart')
+        axios.get('https://ecart-backend-u8l5.onrender.com/api/cart')
             .then(function (response) {
                 let main = document.querySelector("main")
                 for(item of response.data.data){

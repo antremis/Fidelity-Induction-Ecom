@@ -246,7 +246,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
 	<script>
 		const createNewReview = () => {
-			axios.post('http://127.0.0.1:5000/api/review', {
+			axios.post('https://ecart-backend-u8l5.onrender.com/api/review', {
 				"p_id": params.get("pid"),
 				"rating": prompt("Enter rating"),
 				"review": prompt("Enter Review"),
@@ -312,13 +312,13 @@
 		let params = new URLSearchParams(window.location.search)
 		let res = null
 		const getData = async () => {
-			res = await axios.get(`http://127.0.0.1:5000/api/products/${params.get("pid")}`)
+			res = await axios.get(`https://ecart-backend-u8l5.onrender.com/api/products/${params.get("pid")}`)
 			document.querySelector("#info-container").innerHTML = renderProduct(res.data.data)
 		}
 
 		const addToCart = async () => {
 			let btn = document.querySelector(".add-to-cart")
-			axios.post("http://127.0.0.1:5000/api/cart/")
+			axios.post("https://ecart-backend-u8l5.onrender.com/api/cart/")
 		}
 	</script>
 
@@ -384,7 +384,7 @@
 
 		}
 		const getProductReviews = () => {
-			axios.get(`http://127.0.0.1:5000/api/review/product/${params.get("pid")}`)
+			axios.get(`https://ecart-backend-u8l5.onrender.com/api/review/product/${params.get("pid")}`)
 				.then(function (response) {
 					// handle success
 					let review_div = document.querySelector("#review-container")
@@ -410,7 +410,7 @@
 
 		const updateReview = (r_id, review, rating) => {
 
-			axios.patch(`http://127.0.0.1:5000/api/review/${r_id}`, {
+			axios.patch(`https://ecart-backend-u8l5.onrender.com/api/review/${r_id}`, {
 				review: review,
 				rating: 3
 			})
@@ -427,7 +427,7 @@
 
 
 		const deleteReview = (r_id) => {
-			axios.delete(`http://127.0.0.1:5000/api/review/${r_id}`, {
+			axios.delete(`https://ecart-backend-u8l5.onrender.com/api/review/${r_id}`, {
 			})
 				.then(function (response) {
 					// handle success

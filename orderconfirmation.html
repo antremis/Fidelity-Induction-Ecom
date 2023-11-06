@@ -53,7 +53,7 @@
     <script>
         const f1 = () => {
         // Axios GET request for product name and cost
-            axios.get('http://127.0.0.1:5000/api/')
+            axios.get('https://ecart-backend-u8l5.onrender.com/api/')
                 .then(function (response) {
                     // handle success
                     document.getElementById('product-name').innerText = `Product Name: ${response.data.product_name}`;
@@ -67,7 +67,7 @@
 
         const f2 = () => {
         // Axios GET request for product quantity
-            axios.get('http://127.0.0.1:5000/api/')
+            axios.get('https://ecart-backend-u8l5.onrender.com/api/')
                 .then(function (response) {
                     // handle success
                     document.getElementById('product-quantity').innerText = `Quantity: ${response.data.product_quantity}`;

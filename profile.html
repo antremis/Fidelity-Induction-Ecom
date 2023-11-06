@@ -11,7 +11,7 @@
 <body>
     <script>
         // GET request to fetch all products
-        // axios.get('http://127.0.0.1:5000/api/logs')
+        // axios.get('https://ecart-backend-u8l5.onrender.com/api/logs')
         //   .then(function (response) {
         //     // handle success
         //     console.log(response.data);
@@ -24,7 +24,7 @@
     
         // // POST request to add a product
         // const profile = () =>{
-        // axios.post('http://127.0.0.1:5000/api/product', {
+        // axios.post('https://ecart-backend-u8l5.onrender.com/api/product', {
            
         //   })
         //   .then(function (response) {
@@ -86,7 +86,7 @@
         // const p = document.querySelector("#p").innerHTML = 1        
 
         const getUserData = () =>{
-            axios.get(`http://127.0.0.1:5000/api/user`)
+            axios.get(`https://ecart-backend-u8l5.onrender.com/api/user`)
             .then(function (response) {
                 // handle success
                 username_field.value = response.data.email
