@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/cart.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/index.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="dashboard.html">E-Kart</a>
+        <form class="search-bar">
+            <input type="text" placeholder="Search products" name="query">
+            <button>Search</button>
+        </form>
+        <nav>
+            <ul>
+                <li><a href="cart.html">Sell</a></li>
+                <li><a href="seller.html">Sell</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+    </main>
+    <a href="checkoutpage.html">Buy Now</a>
+</body>
+<script>
+    const renderProducts = (product) => {
+        return `
+            <div class="row p-2 bg-white border rounded product-card" id="product.p_id">
+                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
+                        src="${product.img}">
+                </div>
+                <div class="col-md-6 mt-1">
+                    <h5>${product.name}</h5>
+                    <div class="d-flex flex-row">
+                        <div class="ratings mr-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></div><span>310</span>
+                    </div>
+                    <div class="mt-1 mb-1 spec-1"><span>${product.tag}</span></div>
+                    <p class="text-justify text-truncate para mb-0">${product.des}<br><br></p>
+                </div>
+                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
+                    <div class="d-flex flex-row align-items-center">
+                        <h4 class="mr-1">₹ ${product.cost}</h4>
+                    </div>
+                    <h6 class="text-success"><span class="strike-text">₹ ${~~(product.cost * 1.1)}</span></h6>
+                    <img src="https://media.istockphoto.com/id/1206806317/vector/shopping-cart-icon-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=1RRQJs5NDhcB67necQn1WCpJX2YMfWZ4rYi1DFKlkNA="
+                        class="cart-image">
+                    <img src="https://cdn-icons-png.flaticon.com/512/7245/7245139.png" class="wishlist-image">
+                </div>
+            </div>
+        `
+    }
+
+    const getCart = () => {
+        axios.get('http://127.0.0.1:5000/api/cart')
+            .then(function (response) {
+                let main = document.querySelector("main")
+                for(item of response.data.data){
+                    main.innerHTML += renderProducts(item)
+                }
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+    }
+</script>
+
+</html>

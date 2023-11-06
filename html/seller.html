@@ -10,9 +10,11 @@
 	<!-- 
     - custom css link
   -->
-	<link rel="stylesheet" href="../styles/product_description.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="../styles/product_description.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	<!-- 
     - google font link
@@ -202,24 +204,24 @@
 
 							<div class="counter-wrapper">
 
-								<button class="counter-btn" data-qty-minus>
-									<ion-icon name="remove-outline"></ion-icon>
-								</button>
+                <!-- <button class="counter-btn" data-qty-minus>
+                  <ion-icon name="remove-outline"></ion-icon>
+                </button>
 
 								<span class="span" data-qty>1</span>
 
-								<button class="counter-btn" data-qty-plus>
-									<ion-icon name="add-outline"></ion-icon>
-								</button>
+                <button class="counter-btn" data-qty-plus>
+                  <ion-icon name="add-outline"></ion-icon>
+                </button> -->
 
 							</div>
 
-							<button class="cart-btn">
-								<ion-icon name="bag-handle-outline" style="width: 1.5vmax; height: 1.5vmax;"
-									aria-hidden="true"></ion-icon>
+              <button class="cart-btn">
+                <ion-icon name="bag-handle-outline" style="width: 1.5vmax; height: 1.5vmax;"
+                  aria-hidden="true"></ion-icon>
 
-								<span class="span" style="font-size: 1vmax;">Add item</span>
-							</button>
+                <span class="span" style="font-size: 1vmax;">Add Product</span>
+              </button>
 
 						</div>
 
@@ -233,8 +235,21 @@
 	<!-- 
     - ionicon link
   -->
-	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    document.querySelector(".cart-btn").onclick = createProduct
+  </script>
+      <script>
+        let form = document.querySelector("form.search-bar")
+        console.log(form)
+        console.log(form.query.value)
+        form.addEventListener("submit", e => {
+            e.preventDefault()
+            e.stopPropagation()
+            window.location = `listing_page.html?query=${form.query.value}`
+        })
+    </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 

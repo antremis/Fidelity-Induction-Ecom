@@ -38,15 +38,15 @@
         
     </script>
     <header class="header">
-        <h1>My Profile</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Search products">
+        <a href="dashboard.html">E-Kart</a>
+        <form class="search-bar">
+            <input type="text" placeholder="Search products" name="query">
             <button>Search</button>
-        </div>
+        </form>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Shop</a></li>
+                <li><a href="seller.html">Sell</a></li>
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </nav>
@@ -85,8 +85,8 @@
 
         // const p = document.querySelector("#p").innerHTML = 1        
 
-        const getUserData = (id) =>{
-            axios.get(`http://127.0.0.1:5000/api/user/${id}`)
+        const getUserData = () =>{
+            axios.get(`http://127.0.0.1:5000/api/user`)
             .then(function (response) {
                 // handle success
                 username_field.value = response.data.email
@@ -98,14 +98,6 @@
                 console.log(error);
             })
         }
-        
-        
-        document.onload(() => {
-            let uid = localStorage.getItem("uid")
-            getUserData(uid)
-        })
-
-
     </script>
 </body>
 </html>
