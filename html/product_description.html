@@ -74,7 +74,9 @@
 
 					</div>
 
-
+					<div id="info-container">
+						
+					</div>
 
 				</div>
 			</section>
@@ -240,14 +242,6 @@
 	<!-- <script src="../scripts/product_description.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
 	<script>
-		let params = new URLSearchParams(window.location.search)
-		const getData = async () => {
-			let res = await axios.get(`http://127.0.0.1:5000/api/products/${params.get("pid")}`)
-			console.log(res.data)
-		}
-		window.onload = getData
-	</script>
-	<script>
 		renderProduct = (product) => {
 			return `
 			<div class="product-content">
@@ -272,31 +266,32 @@
 
 <div class="btn-group">
 
-	<div class="counter-wrapper">
-
-		<button class="counter-btn" data-qty-minus>
-			<ion-icon name="remove-outline"></ion-icon>
-		</button>
-
-		<span class="span" data-qty>1</span>
-
-		<button class="counter-btn" data-qty-plus>
-			<ion-icon name="add-outline"></ion-icon>
-		</button>
-
-	</div>
-
-	<button class="cart-btn">
+	<div class="cart-btn">
 		<ion-icon name="bag-handle-outline" style="width: 1.5vmax; height: 1.5vmax;"
 			aria-hidden="true"></ion-icon>
 
 		<span class="span" style="font-size: 1vmax;">Add to cart</span>
-	</button>
+	</div>
 
 </div>
 
 </div>
 			`
+		}
+
+
+	</script>
+	<script>
+		let params = new URLSearchParams(window.location.search)
+		let res = null
+		const getData = async () => {
+			res = await axios.get(`http://127.0.0.1:5000/api/products/${params.get("pid")}`)
+			document.querySelector("#info-container").innerHTML = renderProduct(res.data.data)
+		}
+		window.onload = getData
+
+		const addToCart = async () => {
+			
 		}
 	</script>
 
