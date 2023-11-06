@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>HELP ME</div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // GET request to fetch all products
+        // axios.get('http://127.0.0.1:5000/api/review')
+        //   .then(function (response) {
+        //     // handle success
+        //     console.log(response.data);
+        //     // Process the response data as needed
+        //   })
+        //   .catch(function (error) {
+        //     // handle error
+        //     console.log(error);
+        //   });
+        const createNewReview = (p_id,review,u_id,rating) =>{
+            axios.post('http://127.0.0.1:5000/api/review', {
+                "r_id":"1",
+                "p_id":"1",
+                "review":"good",
+                "u_id":"1",
+                "date":"12-10-2020",
+                "rating":"3"
+            })
+            .then(function (response) {
+                // handle success
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            });
+        }
+
+
+
+        const updateReview=(r_id,review,rating) =>{
+        
+        axios.patch(`http://127.0.0.1:5000/api/review/${r_id}`, {
+            review:review,
+            rating:3
+        })
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });}
+
+        const deleteReview=(r_id) =>{
+        axios.delete(`http://127.0.0.1:5000/api/review/${r_id}`, {
+        })
+        .then(function (response) {
+            // handle success
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
+    }
+
+    </script>
+</body>
+</html>
